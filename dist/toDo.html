@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+    <title>To-Do-App</title>
+</head>
+<body style="background-color: #fff7f0;">
+    <!--footer Section-->
+    <header class="w-full text-center mt-4">
+        <h1 class="text-3xl text-orange-700 font-bold">To Do App 📑</h1>
+    </header>
+
+   <!--input todo-->
+
+    <section class="w-[70%] mx-auto mt-5 p-6 bg-white rounded-2xl max-w-md shadow-lg">
+        <div class="flex flex-col gap-2">
+            <form class="flex flex-col justify-center items-center gap-4">
+                <div class="flex flex-row gap-1">
+                <label class="text-xl">Enter your Todo : </label>
+                <input type="text" placeholder="Enter your todo....."
+                class="border-2 border-orange-700 rounded px-1 py-1"
+                />
+                </div>
+
+                <div class="flex flex-row gap-1">
+                <label class="text-xl">Due Date : </label>
+                <input type="date"
+                class="border-2 border-orange-700 rounded px-1 py-1">
+                </div>
+
+                <div class="flex flex-row gap-1">
+                    <label class="text-xl">Reminder Time : </label>
+                    <input type="time"
+                    class="border-2 border-orange-700 rounded px-1 py-1">
+                    </div>
+
+                <button class="bg-orange-500 text-white hover:border-2 hover:text-orange-600 hover:bg-white py-2 px-2 rounded-xl">
+                    Add Todo
+                </button>
+            </form>
+        </div>
+    </section>
+
+
+    <!--display Todo-->
+    <section class="w-[90%] mx-auto mt-8 bg-white rounded-2xl p-6 shadow-lg">
+        <h2 class="font-bold text-[26px] text-orange-700 text-center">My Tasks 📚 </h2>
+
+        <div class="flex flex-row justify-between mt-4">
+            <div class="flex flex-row gap-2">
+                <p>Filter Task:</p>
+                <select class="border-2 border-blue-800 rounded">
+                    <option>All</option>
+                    <option>Completed</option>
+                    <option>Pending</option>
+                </select>
+            </div>
+            <div  class="flex flex-row gap-2">
+                <p>Arrange Tasks: </p>
+                <select class="border-2 border-blue-800 rounded">
+                    <option>A-Z</option>
+                    <option>Z-A</option>
+                </select>
+            </div>
+        </div>
+
+<!--display todos-->
+        <div class="mt-8">
+           <ul>
+            <li class="border-2 border-orange-600 px-2 py-2 rounded-lg font-bold">Hello</li>
+           </ul>
+        </div>
+    </section>
+</body>
+</html>
