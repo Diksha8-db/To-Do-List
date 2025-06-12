@@ -39,6 +39,7 @@ let clearCompleted = document.getElementById("clearCompleted");
       reminderTime.value === ""
     ) {
       alert("Enter todo..");
+      return;
     } else {
       let listItem = document.createElement("li");
       listItem.classList.add(
