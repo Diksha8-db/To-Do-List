@@ -23,16 +23,21 @@ let todoName = document.getElementById("todoName");
 let dueDate = document.getElementById("dueDate");
 let reminderTime = document.getElementById("reminderTime");
 let taskDisplay = document.getElementById("taskDisplay");
-let clearCompleted = document.getElementById('clearCompleted');
+let clearCompleted = document.getElementById("clearCompleted");
 
 // on click add the task
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  // adding event
-  addTask.addEventListener("click", () => {
-    if (todoName.value === "" && dueDate.value === '' && reminderTime.value === '') {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    addNewTask(); // custom function
+  });
+  
+  function addNewTask(){
+    if (
+      todoName.value === "" &&
+      dueDate.value === "" &&
+      reminderTime.value === ""
+    ) {
       alert("Enter todo..");
     } else {
       let listItem = document.createElement("li");
@@ -43,7 +48,7 @@ form.addEventListener("submit", (event) => {
         "flex-row",
         "justify-between",
         "items-center",
-        "hover:bg-[#fff7f0]",
+        "hover:bg-[#fff7f2]",
         "bg-white",
         "border-2",
         "border-orange-700",
@@ -56,10 +61,10 @@ form.addEventListener("submit", (event) => {
 
       listItem.setAttribute("task-completed", "false");
       listItem.setAttribute("data-due-date", dueDate.value);
-      listItem.setAttribute('draggable', 'true');
+      listItem.setAttribute("draggable", "true");
       listItem.id = `task-${Date.now()}`; // Assign a unique ID based on the current timestamp
 
-
+      // div for storinf the taskname,duedate and reminder
       let taskDiv = document.createElement("div");
       taskDiv.classList.add("flex", "flex-col");
 
@@ -69,11 +74,11 @@ form.addEventListener("submit", (event) => {
       taskName.value = todoName.value;
 
       let dueBox = document.createElement("p");
-      dueBox.classList.add("text-sm");
+      dueBox.classList.add("md:text-sm", "text-[12px]");
       dueBox.innerText = `Due Date : `;
 
       let dueDateDisplay = document.createElement("p");
-      dueDateDisplay.classList.add("text-sm");
+      dueDateDisplay.classList.add("md:text-sm", "text-[12px]");
       dueDateDisplay.innerText = dueDate.value;
       dueDateDisplay.id = "due";
 
@@ -82,11 +87,11 @@ form.addEventListener("submit", (event) => {
       dueDiv.append(dueBox, dueDateDisplay);
 
       let reminderBox = document.createElement("p");
-      reminderBox.classList.add("text-sm");
+      reminderBox.classList.add("md:text-sm", "text-[12px]");
       reminderBox.innerText = `Reminder : `;
 
       let reminderDisplay = document.createElement("p");
-      reminderDisplay.classList.add("text-sm");
+      reminderDisplay.classList.add("md:text-sm", "text-[12px]");
       reminderDisplay.innerText = reminderTime.value;
       reminderDisplay.id = "reminder";
 
@@ -96,6 +101,7 @@ form.addEventListener("submit", (event) => {
 
       taskDiv.append(taskName, dueDiv, reminderDiv);
 
+      // div for storing all the buttons(edit,delete,complete)
       let buttonDiv = document.createElement("div");
       buttonDiv.classList.add(
         "flex",
@@ -106,14 +112,17 @@ form.addEventListener("submit", (event) => {
         "items-center"
       );
 
+      // complete button
       let completedTask = document.createElement("button");
       completedTask.id = "complete";
       completedTask.classList.add("notCompleted");
 
+      // edit button
       let editTask = document.createElement("button");
       editTask.id = "edit";
       editTask.innerText = "✏️";
 
+      // delete button
       let deleteTask = document.createElement("button");
       deleteTask.id = "delete";
       deleteTask.innerText = "🗑️";
@@ -123,10 +132,9 @@ form.addEventListener("submit", (event) => {
       listItem.append(taskDiv, buttonDiv);
 
       taskDisplay.appendChild(listItem);
-      addDragAndDropListeners(listItem);
+      addDragAndDropListeners();
 
-      reminderCall(reminderTime.value, todoName.value);
-
+      showTime();
       // Clear inputs
       todoName.value = "";
       dueDate.value = "";
@@ -134,8 +142,7 @@ form.addEventListener("submit", (event) => {
 
       saveData();
     }
-  });
-});
+  };
 
 // marking task as complete
 taskDisplay.addEventListener("click", (event) => {
@@ -154,7 +161,6 @@ taskDisplay.addEventListener("click", (event) => {
     toggleClearCompletedButton();
   }
 });
-
 
 // delete Task
 taskDisplay.addEventListener("click", function (event) {
@@ -184,11 +190,11 @@ taskDisplay.addEventListener("click", (event) => {
   }
 });
 
-
 // adding filter functinality
 let statusFilter = document.getElementById("filterStatus");
 let arrangement = document.getElementById("order");
 
+// filter on the basis of task status(completed,pending,all)
 statusFilter.addEventListener("change", (e) => {
   filterTasks(e.target.value);
 });
@@ -262,19 +268,67 @@ function sortTasks(dueTask) {
   });
 }
 
-
 // adding clear completed task functionality
-clearCompleted.addEventListener('click',function(){
-  let tasks = document.querySelectorAll('#taskDisplay li');
+clearCompleted.addEventListener("click", function () {
+  let tasks = document.querySelectorAll("#taskDisplay li");
   tasks.forEach((task) => {
-      if(task.getAttribute("task-completed") === "true"){
-        task.remove();
-      }
-  })
+    if (task.getAttribute("task-completed") === "true") {
+      task.remove();
+    }
+  });
   saveData();
-})
+});
 
-// storing todos in localStorage
+document.addEventListener("DOMContentLoaded", displayData);
+
+// adding reminder notification functionality just after dom is loaded
+
+function showTime() {
+  let tasks = document.querySelectorAll("#taskDisplay li");
+  let now = new Date();
+
+  tasks.forEach((task) => {
+    let taskDue = task.querySelector("input").value;
+    let reminderCall = task.querySelector("#reminder").innerText.trim();
+    let [hours, minutes] = reminderCall.split(":").map(Number);
+
+    let reminderDate = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      hours,
+      minutes,
+      0
+    );
+
+    if (reminderDate < now) {
+      let delay = reminderDate - now;
+
+      setTimeout(() => {
+        new Notification("Due Task", {
+          body: `${taskDue} is due`,
+          icon: "./assets/clock.png",
+        });
+      }, delay);
+    }
+  });
+}
+
+setTimeout(() => {
+  if (Notification.permission !== "granted") {
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted") {
+        showTime();
+      } else {
+        console.log("Notification permission not granted.");
+      }
+    });
+  } else {
+    showTime();
+  }
+}, 100); // Delay ensures tasks are in DOM before scanning
+
+// storing todos in localStorage in form of array of strings
 function saveData() {
   let tasks = [];
   document.querySelectorAll("#taskDisplay li").forEach((item) => {
@@ -293,14 +347,16 @@ function saveData() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+// clear complete button display on load if there is completed task present
 function toggleClearCompletedButton() {
-  const hasCompletedTasks = Array.from(document.querySelectorAll('#taskDisplay li'))
-    .some(task => task.getAttribute('task-completed') === 'true');
-  
-  clearCompleted.style.display = hasCompletedTasks ? 'block' : 'none';
+  const hasCompletedTasks = Array.from(
+    document.querySelectorAll("#taskDisplay li")
+  ).some((task) => task.getAttribute("task-completed") === "true");
+
+  clearCompleted.style.display = hasCompletedTasks ? "block" : "none";
 }
 
-toggleClearCompletedButton() 
+toggleClearCompletedButton();
 
 // displaying the data from localStorage
 function displayData() {
@@ -326,6 +382,7 @@ function displayData() {
       "w-full"
     );
     listItem.setAttribute("task-completed", task.completed ? "true" : "false");
+    listItem.setAttribute("draggable", "true");
 
     const taskDiv = document.createElement("div");
     taskDiv.classList.add("flex", "flex-col");
@@ -336,14 +393,15 @@ function displayData() {
     taskName.value = task.name;
     if (task.completed) {
       taskName.classList.add("taskCompleted");
+      clearCompleted.style.display = "block";
     }
 
     let dueBox = document.createElement("p");
-    dueBox.classList.add("text-sm");
-    dueBox.innerText = `Due Date : `;
+    dueBox.classList.add("md:text-sm", "text-[12px]");
+    dueBox.innerText = `Due Date:`;
 
     let dueDateDisplay = document.createElement("p");
-    dueDateDisplay.classList.add("text-sm");
+    dueDateDisplay.classList.add("md:text-sm", "text-[12px]");
     dueDateDisplay.innerText = task.dueTime;
     dueDateDisplay.id = "due";
 
@@ -352,17 +410,17 @@ function displayData() {
     dueDiv.append(dueBox, dueDateDisplay);
 
     let reminderBox = document.createElement("p");
-    reminderBox.classList.add("text-sm");
+    reminderBox.classList.add("md:text-sm", "text-[12px]");
     reminderBox.innerText = `Reminder : `;
 
     let reminderDisplay = document.createElement("p");
-    reminderDisplay.classList.add("text-sm");
+    reminderDisplay.classList.add("md:text-sm", "text-[12px]");
     reminderDisplay.innerText = task.reminder;
     reminderDisplay.id = "reminder";
 
     let reminderDiv = document.createElement("div");
     reminderDiv.classList.add("flex", "flex-row", "gap-2");
-    reminderDiv.append(reminderBox,reminderDisplay);
+    reminderDiv.append(reminderBox, reminderDisplay);
 
     taskDiv.append(taskName, dueDiv, reminderDiv);
 
@@ -398,78 +456,72 @@ function displayData() {
     listItem.append(taskDiv, buttonDiv);
 
     taskDisplay.appendChild(listItem);
-
+    addDragAndDropListeners();
   });
 }
 
+// adding drag and drop functionality
 
-document.addEventListener("DOMContentLoaded", displayData);
+function addDragAndDropListeners() {
+  let tasks = document.querySelectorAll("#taskDisplay li");
 
+  tasks.forEach((task) => {
+    task.addEventListener("dragstart", (e) => {
+      task.classList.add("dragging");
+    });
 
-// adding reminder notification functionality
-if(Notification.permission !== 'granted'){
-  Notification.requestPermission();
-}
+    task.addEventListener("dragend", () => {
+      task.classList.remove("dragging");
+      saveData();
+    });
 
-function reminderCall(reminderTime, todoName){
-   let now = new Date();
-   let reminderDate= new Date(reminderTime);
+    taskDisplay.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      let afterElement = getDragAfterElement(e.clientY);
+      let draggedItem = document.querySelector(".dragging");
 
-   if(reminderDate > now){
-    let delay = reminderDate - now;
-   
+      if (!afterElement) {
+        taskDisplay.appendChild(draggedItem);
+      } else {
+        taskDisplay.insertBefore(draggedItem, afterElement);
+      }
+    });
 
-   setTimeout(() => {
-    new Notification("Call Reminder⏱️",{
-      body : `Time to complete : ${todoName}`,
-    })
-   },delay);
-  }
-}
+    task.addEventListener("dragleave", () => {
+      task.classList.remove("drag-over");
+    });
 
-
-function addDragAndDropListeners(listItem) {
-  listItem.addEventListener("dragstart", (e) => {
-    e.dataTransfer.setData("text/plain", listItem.id);
-    listItem.classList.add("dragging");
-  });
-
-  listItem.addEventListener("dragend", () => {
-    listItem.classList.remove("dragging");
-    saveData();
-  });
-
-  listItem.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    const afterElement = getDragAfterElement(e.clientY);
-    const draggingOverItem = afterElement === null ? listItem : afterElement;
-    draggingOverItem.classList.add("drag-over");
-  });
-
-  listItem.addEventListener("dragleave", () => {
-    listItem.classList.remove("drag-over");
-  });
-
-  listItem.addEventListener("drop", (e) => {
-    e.preventDefault();
-    const afterElement = getDragAfterElement(e.clientY);
-    const draggingOverItem = afterElement === null ? listItem : afterElement;
-    taskDisplay.insertBefore(listItem, draggingOverItem);
-    listItem.classList.remove("drag-over");
-    saveData();
+    taskDisplay.addEventListener("drop", (e) => {
+      e.preventDefault();
+      let draggedItem = document.querySelector(".dragging");
+      if (draggedItem) {
+        draggedItem.classList.remove("dragging");
+        saveData();
+      }
+    });
   });
 }
 
 // Get the element to place the dragged item after
-function getDragAfterElement(clientY) {
-  const draggableElements = [...taskDisplay.querySelectorAll('.task-item:not(.dragging)')];
-  return draggableElements.reduce((closest, child) => {
-    const box = child.getBoundingClientRect();
-    const offset = clientY - box.top - box.height / 2;
-    if (offset < 0 && offset > closest.offset) {
-      return { offset: offset, element: child };
-    } else {
-      return closest;
-    }
-  }, { offset: Number.NEGATIVE_INFINITY }).element;
+function getDragAfterElement(y) {
+  let draggableElements = [
+    ...taskDisplay.querySelectorAll("li:not(.dragging)"),
+  ];
+
+  return draggableElements.reduce(
+    (closest, child) => {
+      let box = child.getBoundingClientRect();
+      let offset = y - box.top - box.height / 2; // use midpoint
+      if (offset < 0 && offset > closest.offset) {
+        return { offset, element: child };
+      } else {
+        return closest;
+      }
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  addDragAndDropListeners();
+});
