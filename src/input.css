@@ -79,14 +79,14 @@ input {
 
 /* CUSTOM STYLING USED IN JS */
 .completed {
-  background-image: url("../dist/assets/completed.png");
+  background-image: url("https://github.com/Diksha8-db/To-Do-List/blob/main/dist/assets/completed.png");
   background-size: cover;
   width: 24px;
   height: 24px;
 }
 .notCompleted {
   z-index: 1;
-  background-image: url("../dist/assets/notCompleted.png");
+  background-image: url("https://github.com/Diksha8-db/To-Do-List/blob/main/dist/assets/notCompleted.png");
   background-size: cover;
   width: 24px;
   height: 24px;
