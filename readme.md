@@ -37,6 +37,11 @@ A responsive and user-friendly To-Do List web app built using *HTML*, *CSS(Tailw
 ## Light Mode:
  ![Screenshot_12-6-2025_133624_127 0 0 1](https://github.com/user-attachments/assets/fdbc207f-b6d6-498f-85c3-f36ebb6ffdb3) 
 
+## ⚙️ Deployment 
+1. https://taskora-to-do.netlify.app/
+2. https://taskora-to-do.vercel.app/
+3. https://diksha8-db.github.io/To-Do-List/
+
 ## 🛠 Installation & Run Locally
 1. *Clone the Repository*
    ```bash
