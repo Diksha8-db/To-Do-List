@@ -263,9 +263,6 @@
   .w-\[80\%\] {
     width: 80%;
   }
-  .w-\[90\%\] {
-    width: 90%;
-  }
   .w-full {
     width: 100%;
   }
@@ -330,8 +327,8 @@
   .border-orange-700 {
     border-color: var(--color-orange-700);
   }
-  .bg-\[\#fff7f0\] {
-    background-color: #fff7f0;
+  .bg-\[\#fff2ea\] {
+    background-color: #fff2ea;
   }
   .bg-gray-900 {
     background-color: var(--color-gray-900);
@@ -403,9 +400,8 @@
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
   }
-  .text-sm {
-    font-size: var(--text-sm);
-    line-height: var(--tw-leading, var(--text-sm--line-height));
+  .text-\[12px\] {
+    font-size: 12px;
   }
   .text-\[26px\] {
     font-size: 26px;
@@ -477,6 +473,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: #fff7f0;
+      }
+    }
+  }
+  .hover\:bg-\[\#fff7f2\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #fff7f2;
       }
     }
   }
@@ -565,6 +568,12 @@
   .md\:p-6 {
     @media (width >= 48rem) {
       padding: calc(var(--spacing) * 6);
+    }
+  }
+  .md\:text-sm {
+    @media (width >= 48rem) {
+      font-size: var(--text-sm);
+      line-height: var(--tw-leading, var(--text-sm--line-height));
     }
   }
   .md\:text-xl {
@@ -669,7 +678,7 @@
     }
   }
 }
-@media screen and (max-width:426px) {
+@media screen and (max-width: 426px) {
   .inputTodo {
     padding: 5px;
     width: 100% !important;
@@ -692,7 +701,7 @@
     width: 60% !important;
   }
 }
-@media screen and (max-width:376px) {
+@media screen and (max-width: 376px) {
   .startNow {
     display: none;
   }
@@ -718,7 +727,7 @@ input:focus {
 select:focus {
   outline: none;
 }
-select,option {
+select, option {
   color: rgb(61, 90, 202);
 }
 .dark select {
@@ -737,18 +746,18 @@ optioon {
 .inputTodo {
   width: 60%;
 }
-button,select,input {
+button, select, input {
   cursor: pointer;
 }
 .completed {
-  background-image: url('../dist/assets/completed.png');
+  background-image: url("../dist/assets/completed.png");
   background-size: cover;
   width: 24px;
   height: 24px;
 }
 .notCompleted {
   z-index: 1;
-  background-image: url('../dist/assets/notCompleted.png');
+  background-image: url("../dist/assets/notCompleted.png");
   background-size: cover;
   width: 24px;
   height: 24px;
@@ -760,8 +769,13 @@ button,select,input {
   background-color: rgba(78, 78, 78, 0.977);
 }
 .dragging {
-  border: 2px dashed #ff6347;
+  opacity: 0.4;
   transform: scale(1.05);
+  border: 2px dashed orange;
+}
+li[draggable="true"] {
+  cursor: grab;
+  user-select: none;
 }
 @property --tw-border-style {
   syntax: "*";

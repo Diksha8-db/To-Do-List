@@ -4,75 +4,126 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--exporting the font awesome stylesheet-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body class="dark:bg-black dark:text-white pt-5">
-
+    <!-- header section start-->
     <header class="w-full">
-
-      <div class="dark:bg-gray-800 dark:shadow-lg dark:shadow-neutral-800 w-full flex flex-row justify-between items-center py-2 px-4 fixed top-0 bg-white z-50 shadow-lg shadow-gray-200">
-        
+      <div
+        class="dark:bg-gray-800 dark:shadow-lg dark:shadow-neutral-800 w-full flex flex-row justify-between items-center py-2 px-4 fixed top-0 bg-white z-50 shadow-lg shadow-gray-200"
+      >
         <!-- Icon -->
         <div>
-          <h2 class="text-2xl flex ">
-            <span><i class="fa-solid fa-circle-check fa-xl text-orange-600 items-center mr-2" id="icon"></i></span>
-            <span class="text-shadow-amber-600 font-extrabold text-orange-700 text-4xl">𝒯</span><span class="dark:text-white">𝒂𝒔𝒌𝒐𝒓𝒂</span>
+          <h2 class="text-2xl flex">
+            <span
+              ><i
+                class="fa-solid fa-circle-check fa-xl text-orange-600 items-center mr-2"
+                id="icon"
+              ></i
+            ></span>
+            <span
+              class="text-shadow-amber-600 font-extrabold text-orange-700 text-4xl"
+              >𝒯</span
+            ><span class="dark:text-white">𝒂𝒔𝒌𝒐𝒓𝒂</span>
           </h2>
         </div>
-    
+
         <!-- Dark Mode Toggle -->
         <div>
           <button
-          id="darkMode" 
-            class="h-12 w-12 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-            <svg class="fill-violet-700 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            id="darkMode"
+            class="h-12 w-12 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <svg
+              class="fill-violet-700 block dark:hidden"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+              ></path>
             </svg>
-            <svg class="fill-yellow-500 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                    fill-rule="evenodd" clip-rule="evenodd"></path>
+            <svg
+              class="fill-yellow-500 hidden dark:block"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
             </svg>
-        </button>
+          </button>
         </div>
-    
+
         <!-- Get Started Button -->
-        <button class="bg-orange-600 text-white py-2 px-4 rounded-2xl hover:bg-white hover:text-orange-600 hover:border-2 border-orange-600 hover:text-lg transition startNow" onclick="window.location.href='toDo.html'"
+        <button
+          class="bg-orange-600 text-white py-2 px-4 rounded-2xl hover:bg-white hover:text-orange-600 hover:border-2 border-orange-600 hover:text-lg transition startNow"
+          onclick="window.location.href='toDo.html'"
         >
           Get Started
         </button>
-    
       </div>
-    
     </header>
 
-    <section class=" md:w-[80%] mx-auto">
+    <!--header section ends-->
 
-      <div class="mt-[5rem] mx-5 grid md:grid-cols-2 justify-center items-center heroSection gap-5">
-      <!--image-->
-      <div>
-        <img src="./assets/image-dark.png" class="dark:hidden md:w-[500px] md:h-[500px] rounded-2xl w-[50%] h-[50%] mx-auto "/>
-        <img src="./assets/image-light.png" class=" dark:block md:w-[500px] md:h-[500px]  w-[50%] h-[50%] rounded-2xl hidden"/>
+    <!--hero section starts-->
+
+    <section class="md:w-[80%] mx-auto">
+      <div
+        class="mt-[5rem] mx-5 grid md:grid-cols-2 justify-center items-center heroSection gap-5"
+      >
+        <!--image-->
+        <div>
+          <img
+            src="./assets/image-dark.png"
+            class="dark:hidden md:w-[500px] md:h-[500px] rounded-2xl w-[50%] h-[50%] mx-auto"
+          />
+          <img
+            src="./assets/image-light.png"
+            class="dark:block md:w-[500px] md:h-[500px] w-[50%] h-[50%] rounded-2xl mx-auto hidden"
+          />
+        </div>
+
+        <!--quote for motivation-->
+        <div class="flex flex-col items-center justify-center gap-4 flex-wrap">
+          <p class="lg:text-xl">
+            Complaining will not change things in your life; only
+            <span class="text-2xl font-bold text-orange-500">action will</span>.
+            Make a list of all you need to do to change what doesn't work in
+            your life and, little by little, begin making those changes.
+          </p>
+
+          <button
+            class="bg-orange-600 text-white py-2 px-4 rounded-2xl hover:bg-white hover:text-orange-600 hover:border-2 border-orange-600 transition text-center hover:font-bold hover:text-lg"
+            onclick="window.location.href='toDo.html'"
+          >
+            Start Now
+          </button>
+        </div>
       </div>
+    </section>
 
-      <!--quote for motivation-->
-      <div class="flex flex-col items-center justify-center gap-4 flex-wrap"> 
-         <p class="lg:text-xl">Complaining will not change things in your life; only <span class="text-2xl font-bold text-orange-500">action will</span>. Make a list of all you need to do to change what doesn't work in your life and, little by little, begin making those changes.</p>
+    <!--hero section ends here-->
 
-         <button class="bg-orange-600 text-white py-2 px-4 rounded-2xl hover:bg-white hover:text-orange-600 hover:border-2 border-orange-600 transition text-center hover:font-bold hover:text-lg" onclick="window.location.href='toDo.html'"> Start Now </button>
-      </div>
-
-      </div>
-    </section >
-
+    <!--footer section starts here-->
     <footer class="w-full fixed bottom-0 p-2 bg-gray-900">
       <div class="text-center text-white">
-        <p>Copyright &copy; Diksha Bharti </p>
+        <p>Copyright &copy; Diksha Bharti</p>
       </div>
     </footer>
 
+    <!--footer section ends here-->
   </body>
   <script src="script.js"></script>
 </html>

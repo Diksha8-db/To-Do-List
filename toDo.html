@@ -14,84 +14,109 @@
 
     <title>To-Do-App</title>
   </head>
-  <body class="dark:bg-gray-700 dark:text-white bg-[#fff7f0]">
-
+  <body class="dark:bg-gray-700 dark:text-white bg-[#fff2ea]">
     <header class="w-full">
-
-        <div class=" dark:bg-gray-800 dark:shadow-lg dark:shadow-gray-700 w-full flex flex-row justify-between items-center py-2 px-4 fixed top-0 bg-white z-50 shadow-lg shadow-gray-200 ">
-          
-          <!-- Icon -->
-          <div>
-            <h2 class="text-2xl flex">
-              <span><i class="fa-solid fa-circle-check fa-xl text-orange-600 items-center mr-2" id="icon"></i></span>
-              <span class="text-shadow-amber-600 font-extrabold text-orange-700 text-4xl">𝒯</span><span class="dark:text-white">𝒂𝒔𝒌𝒐𝒓𝒂</span>
-            </h2>
-          </div>
-      
-          <!-- Dark Mode Toggle -->
-          <div>
-            <button id="darkMode"
-              class="h-12 w-12 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-              <svg class="fill-violet-700 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-              </svg>
-              <svg class="fill-yellow-500 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                      fill-rule="evenodd" clip-rule="evenodd"></path>
-              </svg>
-          </button>
-          </div>
-      
-          <!-- Get Started Button -->
-          <button class="bg-orange-600 text-white py-2 px-4 rounded-2xl hover:bg-white hover:text-orange-600 hover:border-2 border-orange-600 hover:text-lg transition startNow" onclick="window.location.href='index.html'">
-            Home 🏠
-          </button>
-      
+      <div
+        class="dark:bg-gray-800 dark:shadow-lg dark:shadow-gray-700 w-full flex flex-row justify-between items-center py-2 px-4 fixed top-0 bg-white z-50 shadow-lg shadow-gray-200"
+      >
+        <!-- Icon -->
+        <div>
+          <h2 class="text-2xl flex">
+            <span
+              ><i
+                class="fa-solid fa-circle-check fa-xl text-orange-600 items-center mr-2"
+                id="icon"
+              ></i
+            ></span>
+            <span
+              class="text-shadow-amber-600 font-extrabold text-orange-700 text-4xl"
+              >𝒯</span
+            ><span class="dark:text-white">𝒂𝒔𝒌𝒐𝒓𝒂</span>
+          </h2>
         </div>
-      
-      </header>
+
+        <!-- Dark Mode Toggle -->
+        <div>
+          <button
+            id="darkMode"
+            class="h-12 w-12 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <svg
+              class="fill-violet-700 block dark:hidden"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+              ></path>
+            </svg>
+            <svg
+              class="fill-yellow-500 hidden dark:block"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Get Started Button -->
+        <button
+          class="bg-orange-600 text-white py-2 px-4 rounded-2xl hover:bg-white hover:text-orange-600 hover:border-2 border-orange-600 hover:text-lg transition startNow"
+          onclick="window.location.href='index.html'"
+        >
+          Home 🏠
+        </button>
+      </div>
+    </header>
     <!--footer Section-->
     <header class="w-full text-center mt-[6rem]">
-      <h1 class="text-3xl text-orange-700 font-bold" >To Do App 📑</h1>
+      <h1 class="text-3xl text-orange-700 font-bold">To Do App 📑</h1>
     </header>
 
     <!--input todo-->
 
     <section
-      class="dark:bg-black w-[80%] md:w-[70%] mx-auto mt-5 p-6 bg-white rounded-2xl max-w-md shadow-lg "
+      class="dark:bg-black w-[80%] md:w-[70%] mx-auto mt-5 p-6 bg-white rounded-2xl max-w-md shadow-lg"
     >
-        <form class="flex flex-col gap-4 justify-center">
+      <form class="flex flex-col gap-4 justify-center">
+        <div class="flex md:flex-row gap-1 flex-wrap flex-col items-center">
+          <label class="md:text-xl">Enter your Todo : </label>
+          <input
+            id="todoName"
+            type="text"
+            placeholder="Enter your todo....."
+            class="dark:bg-[#2e2e2e] dark:border-0 border-2 border-orange-700 rounded px-1 py-1 inputTodo"
+          />
+        </div>
 
-          <div class="flex md:flex-row gap-1 flex-wrap flex-col items-center">
-            <label class="md:text-xl">Enter your Todo : </label>
-            <input
-              id="todoName"
-              type="text"
-              placeholder="Enter your todo....."
-              class="dark:bg-[#2e2e2e] dark:border-0 border-2 border-orange-700 rounded px-1 py-1 inputTodo"
-            />
-          </div>
+        <div
+          class="flex md:flex-row md:gap-15 gap-2 flex-col flex-wrap items-center"
+        >
+          <label class="md:text-xl">Due Date : </label>
+          <input
+            id="dueDate"
+            type="date"
+            class="dark:bg-[#2e2e2e] dark:border-0 border-2 border-orange-700 rounded px-1 py-1 inputTodo"
+          />
+        </div>
 
-          <div class="flex md:flex-row md:gap-15 gap-2 flex-col flex-wrap items-center">
-            <label class="md:text-xl ">Due Date : </label>
-            <input
-              id="dueDate"
-              type="date"
-              class=" dark:bg-[#2e2e2e] dark:border-0 border-2 border-orange-700 rounded px-1 py-1 inputTodo"
-            />
-          </div>
+        <div
+          class="flex md:flex-row md:gap-2 gap-1 flex-col flex-wrap items-center"
+        >
+          <label class="md:text-xl">Reminder Time : </label>
+          <input
+            id="reminderTime"
+            type="time"
+            class="dark:bg-[#2e2e2e] dark:border-0 border-2 border-orange-700 rounded px-1 py-1 inputTodo"
+          />
+        </div>
 
-          <div class="flex md:flex-row md:gap-2 gap-1 flex-col flex-wrap items-center">
-            <label class="md:text-xl">Reminder Time : </label>
-            <input
-              id="reminderTime"
-              type="time"
-              class="dark:bg-[#2e2e2e] dark:border-0 border-2 border-orange-700 rounded px-1 py-1 inputTodo"
-            />
-          </div>
-
-        <div class="items-center justify-center flex ">
+        <div class="items-center justify-center flex">
           <button
             class="bg-orange-500 text-white hover:border-2 hover:text-orange-600 hover:bg-white py-2 px-2 rounded-xl"
             id="addTask"
@@ -99,30 +124,37 @@
             Add Todo
           </button>
         </div>
-        </form>
-
+      </form>
     </section>
 
     <!--display Todo-->
-    <section class="dark:bg-black w-[90%] mx-auto mt-8 bg-white rounded-2xl md:p-6 p-4 shadow-lg">
+    <section
+      class="dark:bg-black w-[80%] md:w-[70%] mx-auto mt-8 bg-white rounded-2xl md:p-6 p-4 shadow-lg"
+    >
       <h2 class="font-bold text-[26px] text-orange-700 text-center">
         My Tasks 📚
       </h2>
 
       <div class="flex flex-row justify-between mt-4 filter">
         <div class="dark:md:flex-wrap flex flex-row gap-2 justify-center">
-
           <p>Filter Tasks (Status) :</p>
-          <select class="dark:border-gray-400 border-2 border-blue-800 rounded" id="filterStatus">
+          <select
+            class="dark:border-gray-400 border-2 border-blue-800 rounded"
+            id="filterStatus"
+          >
             <option value="All">All</option>
             <option value="Completed">Completed</option>
             <option value="Pending">Pending</option>
           </select>
-
         </div>
-        <div class="dark:flex-wrap flex flex-row gap-2 justify-center arrangeTask">
+        <div
+          class="dark:flex-wrap flex flex-row gap-2 justify-center arrangeTask"
+        >
           <p>Due Dates :</p>
-          <select id="order" class="dark:border-gray-400 border-2 border-blue-800 rounded">
+          <select
+            id="order"
+            class="dark:border-gray-400 border-2 border-blue-800 rounded"
+          >
             <option value="all">All</option>
             <option value="today">Today</option>
             <option value="week">This week</option>
@@ -133,21 +165,21 @@
 
       <!--display todos-->
       <div class="w-full mt-8 flex flex-col items-center" id="displayTodo">
-        <ul id="taskDisplay" class="w-full">
-          
-         
-        </ul>
-        <button class="bg-orange-500 text-white hover:border-2 hover:text-orange-600 hover:bg-white py-2 px-2 rounded-xl" 
-        id="clearCompleted"
-        > Clear Completed Task</button>
+        <ul id="taskDisplay" class="w-full flex flex-col"></ul>
+        <button
+          class="bg-orange-500 text-white hover:border-2 hover:text-orange-600 hover:bg-white py-2 px-2 rounded-xl"
+          id="clearCompleted"
+        >
+          Clear Completed Task
+        </button>
       </div>
     </section>
 
-    <footer class="w-full scroll-auto bottom-0 p-2 bg-gray-900 mt-6 md:fixed ">
-        <div class="text-center text-white">
-          <p>Copyright &copy; Diksha Bharti </p>
-        </div>
-      </footer>
+    <footer class="w-full scroll-auto bottom-0 p-2 bg-gray-900 mt-6 md:fixed">
+      <div class="text-center text-white">
+        <p>Copyright &copy; Diksha Bharti</p>
+      </div>
+    </footer>
   </body>
   <script src="script.js"></script>
 </html>
